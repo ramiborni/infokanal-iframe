@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <title>Infokanal - Haugaland</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/styles/index.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="frame">
+    <div class="title">
+      <strong>Sunnhordland News</strong>
+    </div>
+    <div>
+      <ul id="newslist" class="news-items">
+
+      </ul>
+    </div>
+  </main>
+
+  <script defer type="module">
+    import rssParser from 'https://cdn.jsdelivr.net/npm/rss-parser@3.13.0/+esm'
+
+    var parser = new rssParser({
+      customFields: {
+        item: ['media:content']
+      }
+    });
+    await parser.parseURL(
+      "https://www.infokanal.com/sunnhordland_rss.xml",
+      function (err, result) {
+        if (err) throw err;
+        result.items.forEach(function (entry) {
+          const media = entry['media:content'].$.url
+          const content = `<a href="${entry.link}" title="${entry.title}">
+                    <img class="news-item-image" src="${media}" alt="${entry.title}"/>
+                    <center> ${entry.title}</center>
+                  </a>`.trim();
+          const listItem = document.createElement('li')
+          listItem.className = "news-item";
+          listItem.innerHTML = content;
+          document.getElementById('newslist').append(listItem);
+        });
+      }
+    );
+  </script>
+</body>
+
+</html>
