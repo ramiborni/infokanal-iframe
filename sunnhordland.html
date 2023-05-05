@@ -36,7 +36,7 @@
           const title = entry.title.split(':')
           const content = `<a href="${entry.link}" title="${entry.title}">
                 <img class="news-item-image" src="${media}" alt="${entry.title}"/>
-                <center> <b>${title[0]}:{title[1]}</b> ${title[2]} </center>
+                <center> <b>${title[0]}:{title[1]}:</b> ${title[2]} </center>
               </a>`.trim();
           const listItem = document.createElement('li')
           listItem.className = "news-item";
