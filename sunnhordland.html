@@ -28,15 +28,16 @@
       }
     });
     await parser.parseURL(
-      "https://www.infokanal.com/sunnhordland_rss.xml",
+      "https://www.infokanal.com/haugaland_rss.xml",
       function (err, result) {
         if (err) throw err;
         result.items.forEach(function (entry) {
           const media = entry['media:content'].$.url
+          const title = entry.title.split(':')
           const content = `<a href="${entry.link}" title="${entry.title}">
-                    <img class="news-item-image" src="${media}" alt="${entry.title}"/>
-                    <center> ${entry.title}</center>
-                  </a>`.trim();
+                <img class="news-item-image" src="${media}" alt="${entry.title}"/>
+                <center> <b>${title[0]}:{title[1]}</b> ${title[2]} </center>
+              </a>`.trim();
           const listItem = document.createElement('li')
           listItem.className = "news-item";
           listItem.innerHTML = content;
