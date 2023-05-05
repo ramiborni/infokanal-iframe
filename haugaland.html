@@ -4,13 +4,20 @@
   <title>Infokanal - Haugaland</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="/styles/index.css" rel="stylesheet">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="shortcut icon" href="/assets/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-512x512.png">
 </head>
 
 <body>
 
   <main class="frame">
     <div class="title">
-      <strong>Haugaland News</strong>
+      <strong>Aktuelt Haugalandet</strong>
     </div>
     <div>
       <ul id="newslist" class="news-items">
@@ -33,9 +40,10 @@
         if (err) throw err;
         result.items.forEach(function (entry) {
           const media = entry['media:content'].$.url
+          const title = entry.title.split(':')
           const content = `<a href="${entry.link}" title="${entry.title}">
                     <img class="news-item-image" src="${media}" alt="${entry.title}"/>
-                    <center> ${entry.title}</center>
+                    <center> <b>${title[0]}:</b> ${title[1]} </center>
                   </a>`.trim();
           const listItem = document.createElement('li')
           listItem.className = "news-item";
