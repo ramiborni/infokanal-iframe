@@ -34,10 +34,13 @@
         result.items.forEach(function (entry) {
           const media = entry['media:content'].$.url
           const title = entry.title.split(':')
+          const prefix = `${title[0]}:${title[1]}:`
+          title.splice(0,2)
+          const text = title.join(' ');
           const content = `<a href="${entry.link}" title="${entry.title}">
-                <img class="news-item-image" src="${media}" alt="${entry.title}"/>
-                <center> <b>${title[0]}:{title[1]}:</b> ${title[2]} </center>
-              </a>`.trim();
+                    <img class="news-item-image" src="${media}" alt="${entry.title}"/>
+                    <center> <b>${prefix}</b> ${text} </center>
+                  </a>`.trim();
           const listItem = document.createElement('li')
           listItem.className = "news-item";
           listItem.innerHTML = content;
