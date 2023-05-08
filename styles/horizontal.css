@@ -20,13 +20,19 @@
 }
 
 .news-items{
-    padding: 0 !important;
-    list-style-type: none !important;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
     width: 100%;
+    padding: 0 !important;
+    align-items: flex-start
 }
 
+
 .news-item{
-    border-top: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
     margin: 0 !important;
     padding: 14px 0;
 }
@@ -34,12 +40,18 @@
 .news-item a{
     text-decoration: none;
     justify-content: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .news-item-image{
-    max-width: 100%;
-    height: auto!important;
-    width: 100%;
+    width: 200px; /* Set the width of the image */
+    height: 200px; /* Set the height of the image */
+    object-fit: cover; /* Ensure the aspect ratio is maintained while resizing */
+    margin: auto;
+    margin-bottom: 5px;
+
 }
 
 img {
