@@ -11,6 +11,7 @@ const getData = async (url) => {
         ,
         function (err, result) {
           if (err) throw err;
+          document.getElementById('newslist').innerHTML="";
           result.items.forEach(function (entry) {
             const media = entry['media:content'].$.url
             const title = entry.title.split(':')
