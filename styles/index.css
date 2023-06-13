@@ -40,6 +40,12 @@ body{
     padding: 14px 0;
 }
 
+.news-item-less-30{
+    background-color: #BC4441;
+    padding: 15px;
+}
+
+
 .news-item a{
     padding-top: 2px;
     text-decoration: none;
@@ -55,6 +61,7 @@ body{
     height: auto!important;
     width: 100%;
 }
+
 
 img {
     border: 0;

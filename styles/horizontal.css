@@ -31,6 +31,12 @@ body{
     align-items: flex-start
 }
 
+.news-item-less-30{
+    background-color: #BC4441;
+    padding: 10px;
+}
+
+
 
 .news-item{
     display: flex;
